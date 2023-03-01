@@ -1,8 +1,11 @@
 package myTicToc;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Main{
 
@@ -19,7 +22,13 @@ public class Main{
 	
 		frame.setVisible(true);
 		frame.add(newGame);
-			
+	
+	
+	
+	
+	
 	}
-
+	
+	
+	
 }

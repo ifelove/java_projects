@@ -1,8 +1,7 @@
 package myTicToc;
 
 import java.awt.Color;
-
-
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -12,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,6 +22,9 @@ public class TicToc extends JPanel implements ActionListener,MouseListener,KeyLi
 	int pointYclicked;
 	boolean playerX=true;
 	boolean gameOn=true;
+	public boolean gameOver=false;
+
+
 	
 	public TicToc() {
 		addKeyListener(this);
@@ -113,6 +116,7 @@ public class TicToc extends JPanel implements ActionListener,MouseListener,KeyLi
 		checkPattern();
 		
 		
+		
 	}
 	
 	@Override
@@ -188,6 +192,8 @@ for( int i=0;i<3;i++){
 		
 		System.out.print("Win1");
 		gameOn=false;
+		gameOverFunction() ;
+		
 		
 	
 		
@@ -198,6 +204,8 @@ for( int i=0;i<3;i++){
 		
 		System.out.print("Win2");
 		gameOn=false;
+		gameOverFunction() ;
+		
 		
 	}	
 		
@@ -207,6 +215,7 @@ for( int i=0;i<3;i++){
 		
 		System.out.print("Win3");
 		gameOn=false;
+		gameOverFunction() ;
 	}	
 		
 
@@ -214,12 +223,14 @@ for( int i=0;i<3;i++){
 		
 		System.out.print("Win4");
 		gameOn=false;
+		gameOverFunction() ;
 	}	
 		
 if(board.board[0][1]==board.board[1][1] && board.board[0][1]==board.board[2][1]&&board.board[0][1]!=0) {
 		
 		System.out.print("Win5");
 		gameOn=false;
+		gameOverFunction() ;
 	}	
 		
 		
@@ -227,12 +238,15 @@ if(board.board[0][2]==board.board[1][2] && board.board[0][2]==board.board[2][2]&
 	
 	System.out.print("Win6");
 	gameOn=false;
+	gameOverFunction() ;
 }	
 	
 if(board.board[0][0]==board.board[1][1] && board.board[0][0]==board.board[2][2]&&board.board[0][0]!=0) {
 	
 	System.out.print("Win7");
 	gameOn=false;
+	gameOverFunction() ;
+	
 }	
 	
 		
@@ -240,9 +254,44 @@ if(board.board[2][0]==board.board[1][1] && board.board[2][0]==board.board[0][2]&
 	
 	System.out.print("Win8");
 	gameOn=false;
+	gameOverFunction() ;
 }	
 			
 		
+		
+		
+		
+	}
+	
+	
+
+	
+	
+	public void gameOverFunction() {
+		gameOn=false;
+		gameOver=true;
+		
+if(gameOver) {
+			
+	//board.draw();
+	
+	
+			
+			JButton button =new JButton("GAME OVER");
+			button.setBounds(30, 20, 250, 250);
+			button.setBackground(Color.BLUE);
+			button.setFocusable(true);
+			button.setForeground(Color.white);
+			button.setFont(new Font("Serif",Font.BOLD,20));
+		
+			this.add(button);
+			
+			
+			
+			System.out.println("\n"+"Game over");
+	
+		}
+	
 		
 		
 		
