@@ -3,6 +3,9 @@ package chessGame;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,12 +17,13 @@ import javax.swing.JPanel;
 
 
 public class Chessgame {
-	
+public static	LinkedList<Piece> pieceCollection=new LinkedList<Piece>();
 	static Image imgs[]=new Image[12];
+	public static Piece SelectedPiece=null;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		LinkedList<Piece> pieceCollection=new LinkedList<Piece>();
+	
 	//	File img=new File("C:\\Users\\UZIBEN NIG. LTD\\Downloads\\chess.png");
 		
 	//	try {
@@ -74,7 +78,22 @@ public class Chessgame {
 		Piece b7Pawn=new Piece(6,1,false,"Pawn",pieceCollection);
 		Piece b8Pawn=new Piece(7,1,false,"Pawn",pieceCollection);
 		//placing white Pieces
-		
+		Piece wKing=new Piece(4,7,true,"King",pieceCollection);
+		Piece wQueen=new Piece(3,7,true,"Queen",pieceCollection);
+		Piece w1Rock=new Piece(0,7,true,"Rock",pieceCollection);
+		Piece w2Rock=new Piece(7,7,true,"Rock",pieceCollection);
+		Piece w1Bishop=new Piece(2,7,true,"Bishop",pieceCollection);
+		Piece w2Bishop=new Piece(5,7,true,"Bishop",pieceCollection);
+		Piece w1Knight=new Piece(1,7,true,"Knight",pieceCollection);
+		Piece w2Knight=new Piece(6,7,true,"Knight",pieceCollection);
+		Piece w1Pawn=new Piece(0,6,true,"Pawn",pieceCollection);
+		Piece w2Pawn=new Piece(1,6,true,"Pawn",pieceCollection);
+		Piece w3Pawn=new Piece(2,6,true,"Pawn",pieceCollection);
+		Piece w4Pawn=new Piece(3,6,true,"Pawn",pieceCollection);
+		Piece w5Pawn=new Piece(4,6,true,"Pawn",pieceCollection);
+		Piece w6Pawn=new Piece(5,6,true,"Pawn",pieceCollection);
+		Piece w7Pawn=new Piece(6,6,true,"Pawn",pieceCollection);
+		Piece w8Pawn=new Piece(7,6,true,"Pawn",pieceCollection);
 	
 		
 		JFrame frame=new JFrame();
@@ -110,24 +129,7 @@ public class Chessgame {
 					e.printStackTrace();
 				}
 				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			
-			
-				
-				
-				
-				
-				
-				
-				
+		
 				
 				
 				boolean white=true;
@@ -176,49 +178,88 @@ public class Chessgame {
 					}
 					 
 					
-					g.drawImage(imgs[id],piece.xPoint*64 ,piece.yPoint*64, this);
+					g.drawImage(imgs[id],piece.x ,piece.y, this);
+				//	g.drawImage(imgs[id],piece.xPoint*64 ,piece.yPoint*64, this);
+					
 					//System.out.print(wKing);
 					//g.drawImage(imgs[0], 300,300,this);
 				}
 				
 				
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 		};
 		
 		
 		
 		
 		frame.add(panel);
+		frame.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				SelectedPiece=getPiece(e.getX(),e.getY());
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				SelectedPiece.move(e.getX()/64, e.getY()/64);
+				frame.repaint();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}});
 		
+		frame.addMouseMotionListener(new MouseMotionListener() {
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if(SelectedPiece!=null) {
+					SelectedPiece.x=e.getX();//-32;
+					SelectedPiece.y=e.getY();//-32;
+				frame.repaint();
+				}
+			}
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}});
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
 
 	}
+	
+	public static Piece getPiece(int x,int y) {
+		int xp=x/64;
+		int yp=y/64;
+		
+		for(Piece piece :pieceCollection) {
+			if(piece.xPoint==xp&& piece.yPoint==yp) {
+				return piece;
+			}
+		}
+		return null;
+	}
 
 }
+  
