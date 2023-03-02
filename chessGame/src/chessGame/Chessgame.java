@@ -57,9 +57,24 @@ public class Chessgame {
 		//	e.printStackTrace();
 	//	}
 		//pieceCollection.add(new Piece(1,0,true,"King",pieceCollection));
-		Piece wKing=new Piece(5,2,true,"King",pieceCollection);
-		Piece wQueen=new Piece(4,2,true,"Queen",pieceCollection);
-		Piece bRock=new Piece(1,2,false,"King",pieceCollection);
+		Piece bKing=new Piece(4,0,false,"King",pieceCollection);
+		Piece bQueen=new Piece(3,0,false,"Queen",pieceCollection);
+		Piece b1Rock=new Piece(0,0,false,"Rock",pieceCollection);
+		Piece b2Rock=new Piece(7,0,false,"Rock",pieceCollection);
+		Piece b1Bishop=new Piece(2,0,false,"Bishop",pieceCollection);
+		Piece b2Bishop=new Piece(5,0,false,"Bishop",pieceCollection);
+		Piece b1Knight=new Piece(1,0,false,"Knight",pieceCollection);
+		Piece b2Knight=new Piece(6,0,false,"Knight",pieceCollection);
+		Piece b1Pawn=new Piece(0,1,false,"Pawn",pieceCollection);
+		Piece b2Pawn=new Piece(1,1,false,"Pawn",pieceCollection);
+		Piece b3Pawn=new Piece(2,1,false,"Pawn",pieceCollection);
+		Piece b4Pawn=new Piece(3,1,false,"Pawn",pieceCollection);
+		Piece b5Pawn=new Piece(4,1,false,"Pawn",pieceCollection);
+		Piece b6Pawn=new Piece(5,1,false,"Pawn",pieceCollection);
+		Piece b7Pawn=new Piece(6,1,false,"Pawn",pieceCollection);
+		Piece b8Pawn=new Piece(7,1,false,"Pawn",pieceCollection);
+		//placing white Pieces
+		
 	
 		
 		JFrame frame=new JFrame();
@@ -122,7 +137,7 @@ public class Chessgame {
 						if(white) {
 							g.setColor(Color.WHITE);
 						}else {
-							g.setColor(Color.GREEN.darker());
+							g.setColor(new Color(119,148,85));
 						}
 						
 						g.fillRect(i*64, j*64,64,64);
