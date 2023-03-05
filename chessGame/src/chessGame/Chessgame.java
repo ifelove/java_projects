@@ -24,7 +24,7 @@ public static	LinkedList<Piece> pieceCollection=new LinkedList<Piece>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	
-	//	File img=new File("C:\\Users\\UZIBEN NIG. LTD\\Downloads\\chess.png");
+	//File img=new File("C:\\Users\\UZIBEN NIG. LTD\\Downloads\\chess.png");
 		
 	//	try {
 	//	BufferedImage allImage=ImageIO.read(new File("C:\\Users\\UZIBEN NIG. LTD\\Downloads\\chess.png"));
@@ -193,6 +193,28 @@ public static	LinkedList<Piece> pieceCollection=new LinkedList<Piece>();
 		
 		
 		frame.add(panel);
+		
+		
+		 	frame.addMouseMotionListener(new MouseMotionListener() {
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				
+				// TODO Auto-generated method stub
+				//if(SelectedPiece!=null) {
+				//	SelectedPiece.x=e.getX()-32;
+					//SelectedPiece.y=e.getY()-32;
+				//frame.repaint();
+			//	}
+				
+			}
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}});
+		
 		frame.addMouseListener(new MouseListener() {
 
 			@Override
@@ -204,14 +226,17 @@ public static	LinkedList<Piece> pieceCollection=new LinkedList<Piece>();
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				SelectedPiece=getPiece(e.getX(),e.getY());
+				//SelectedPiece=getPiece(e.getX(),e.getY());
+				System.out.println(getPiece(e.getX(),e.getY()));
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
+				
 				// TODO Auto-generated method stub
-				SelectedPiece.move(e.getX()/64, e.getY()/64);
-				frame.repaint();
+				//SelectedPiece.move(e.getX()/64, e.getY()/64);
+				//frame.repaint();
+				
 			}
 
 			@Override
@@ -226,40 +251,47 @@ public static	LinkedList<Piece> pieceCollection=new LinkedList<Piece>();
 				
 			}});
 		
-		frame.addMouseMotionListener(new MouseMotionListener() {
-
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
-				if(SelectedPiece!=null) {
-					SelectedPiece.x=e.getX();//-32;
-					SelectedPiece.y=e.getY();//-32;
-				frame.repaint();
-				}
-			}
-
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}});
+	
+		
+	
+		
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
 
 	}
 	
-	public static Piece getPiece(int x,int y) {
-		int xp=x/64;
-		int yp=y/64;
+public static Piece getPiece(int x,int y) {
+		//int xp=x/64;
+		//int yp=y/64;
 		
-		for(Piece piece :pieceCollection) {
-			if(piece.xPoint==xp&& piece.yPoint==yp) {
-				return piece;
-			}
+		//for(Piece piece :pieceCollection) {
+		//	if(piece.xPoint==xp&& piece.yPoint==yp) {
+			//	return piece;
+			//} 
+		//}
+		// return null;
+		//return SelectedPiece;	
+	
+	//............................................................................//
+	
+	int xP=x/64;
+	int yP=y/64;
+	for(Piece piece:pieceCollection) {
+		if(piece.xPoint==xP && piece.yPoint==yP) {
+			return piece;
 		}
-		return null;
+	}	
+	
+	return SelectedPiece;
+	
+	
+	
+	
+	//..............................................................................//
+	
 	}
-
+	
 }
-  
+     

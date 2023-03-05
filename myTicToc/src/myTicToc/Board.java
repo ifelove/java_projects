@@ -33,7 +33,9 @@ public class Board {
 			//if (j==2) System.out.print('\n');
 			board[i][j]=vaccantBoardValue;
 			
+			
 		}
+	
 		
 	}
 	

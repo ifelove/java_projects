@@ -24,12 +24,12 @@ public Piece(int xPoint,int yPoint,boolean isWhite,String pieceName,LinkedList<P
 }
 
 
-public void move(int xPoint,int ypoint){
-	
-	if(Chessgame.getPiece(xPoint*64, ypoint*64)!=null) {
+public void move(int xPoint,int yPoint){
+	/*
+	if(Chessgame.getPiece(xPoint*64, yPoint*64)!=null) {
 		
-		if(Chessgame.getPiece(xPoint*64, ypoint*64).isWhite!=isWhite) {
-			Chessgame.getPiece(xPoint*64, ypoint*64).kill();
+		if(Chessgame.getPiece(xPoint*64, yPoint*64).isWhite!=isWhite) {
+			Chessgame.getPiece(xPoint*64, yPoint*64).kill();
 		}else {
 			x=this.xPoint*64;
 			y=this.yPoint*64;
@@ -41,26 +41,32 @@ public void move(int xPoint,int ypoint){
 		
 		this.xPoint=xPoint;
 		this.yPoint=yPoint;
-	//	x=this.xPoint*64;
-	//	y=this.yPoint*64;
+		x=this.xPoint*64;
+		y=this.yPoint*64;
 	
+	*/
+	
+	
+	
+	
+	
+	//for( Piece piece : piecesCollection) {
 		
-	}
 	
+	//if(piece.xPoint==xPoint && piece.yPoint==yPoint) 
 	
-	
-	
-	///for( Piece piece : piecesCollection) {
-		
-		//if(piece.xPoint==xPoint && piece.yPoint==yPoint) 
-	///	{
-	///		piecesCollection.stream().filter((p)->(p.yPoint==yPoint && p.xPoint==xPoint)).forEachOrdered((p)->{p.kill();});
+		//{
+			piecesCollection.stream().filter((p)->(p.xPoint==xPoint && p.yPoint==yPoint)).forEachOrdered((p)->{p.kill();});
 			//piece.kill();
 			
-	///	}
-	///}
+		//}
+	//}
+	this.xPoint=xPoint;
+	this.yPoint=yPoint;
+	x=this.xPoint*64;
+	y=this.yPoint*64;
 	
-
+}
 
 public void kill(){
 	
@@ -69,3 +75,4 @@ public void kill(){
 
 
 }
+ 
